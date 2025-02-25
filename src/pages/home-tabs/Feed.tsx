@@ -36,7 +36,9 @@ const Feed: React.FC = () => {
               <IonCardTitle>{item.title}</IonCardTitle>
             </IonCardHeader>
             <IonCardContent>{item.description}</IonCardContent>
-            <IonButton fill="clear">See Details</IonButton>
+            <IonButton fill="clear" routerLink={`/it35-lab/app/home/feed/article/${item.id}`}>
+              See Details
+            </IonButton>
           </IonCard>
         ))}
         
