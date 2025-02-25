@@ -42,7 +42,13 @@ const Article: React.FC = () => {
             <p><strong>{article.author}</strong> - {article.date}</p>
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
             <p>{article.content}</p>
-            <p>{article.details}</p>
+            <p style={{
+              textAlign: "justify",
+              textJustify: "inter-word",
+              lineHeight: 1.6
+            }}>
+              {article.details}
+            </p>
           </>
         ) : (
           <p>Article not found.</p>
