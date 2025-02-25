@@ -13,90 +13,9 @@ import {
     IonTitle, 
     IonToolbar 
 } from '@ionic/react';
+import feed from './feedData.json';
 
 const Feed: React.FC = () => {
-  const feed = [
-    {
-      id: '1',
-      title: 'The Future of Renewable Energy',
-      author: 'John Doe',
-      description: 'Exploring the latest advancements in renewable energy technologies.',
-      date: 'Tue, 25 Feb 2025 00:00:00 GMT',
-      details: 'This article delves into how solar, wind, and hydro power are shaping the future of sustainable energy.'
-    },
-    {
-      id: '2',
-      title: 'AI in Everyday Life',
-      author: 'Jane Smith',
-      description: 'How artificial intelligence is transforming daily activities.',
-      date: 'Mon, 24 Feb 2025 00:00:00 GMT',
-      details: 'From smart assistants to self-driving cars, AI is revolutionizing the way we live and work.'
-    },
-    {
-      id: '3',
-      title: 'The Rise of Electric Vehicles',
-      author: 'Michael Johnson',
-      description: 'Understanding the shift toward electric mobility and its impact.',
-      date: 'Sun, 23 Feb 2025 00:00:00 GMT',
-      details: 'This article examines the benefits, challenges, and future trends of electric vehicles worldwide.'
-    },
-    {
-      id: '4',
-      title: 'Remote Work: A New Normal',
-      author: 'Sarah Lee',
-      description: 'How remote work has reshaped business and work-life balance.',
-      date: 'Sat, 22 Feb 2025 00:00:00 GMT',
-      details: 'Companies are adapting to flexible work environments, and employees are reaping the benefits of telecommuting.'
-    },
-    {
-      id: '5',
-      title: 'Blockchain Beyond Cryptocurrency',
-      author: 'David Wilson',
-      description: 'The expanding applications of blockchain technology.',
-      date: 'Fri, 21 Feb 2025 00:00:00 GMT',
-      details: 'Blockchain is not just for Bitcoin—it’s being used in supply chains, healthcare, and secure transactions.'
-    },
-    {
-      id: '6',
-      title: 'Space Exploration: What’s Next?',
-      author: 'Emily Davis',
-      description: 'The future of human and robotic space exploration.',
-      date: 'Thu, 20 Feb 2025 00:00:00 GMT',
-      details: 'NASA, SpaceX, and other agencies are planning missions to Mars and beyond.'
-    },
-    {
-      id: '7',
-      title: 'The Impact of Social Media on Mental Health',
-      author: 'Robert Brown',
-      description: 'Analyzing the pros and cons of social media use.',
-      date: 'Wed, 19 Feb 2025 00:00:00 GMT',
-      details: 'Studies show social media can both positively and negatively affect mental well-being.'
-    },
-    {
-      id: '8',
-      title: 'The Evolution of Smart Homes',
-      author: 'Olivia Martinez',
-      description: 'How IoT is making homes smarter and more efficient.',
-      date: 'Tue, 18 Feb 2025 00:00:00 GMT',
-      details: 'From voice-controlled lights to automated security systems, smart homes are becoming more accessible.'
-    },
-    {
-      id: '9',
-      title: 'Climate Change and Its Global Impact',
-      author: 'Daniel Anderson',
-      description: 'Examining the effects of climate change on different regions.',
-      date: 'Mon, 17 Feb 2025 00:00:00 GMT',
-      details: 'Rising temperatures, natural disasters, and global policies to combat climate change.'
-    },
-    {
-      id: '10',
-      title: 'The Future of 5G and Connectivity',
-      author: 'Sophia Thompson',
-      description: 'How 5G technology is revolutionizing internet speeds and connectivity.',
-      date: 'Sun, 16 Feb 2025 00:00:00 GMT',
-      details: 'From faster downloads to smart cities, 5G is set to change how we connect with the world.'
-    }
-  ];
 
   return (
     <IonPage>
