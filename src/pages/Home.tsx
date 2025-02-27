@@ -21,7 +21,7 @@ import { Route, Redirect } from 'react-router';
 import Favorites from './home-tabs/Favorites';
 import Feed from './home-tabs/Feed';
 import Search from './home-tabs/Search';
-import Article from './home-tabs/Article';
+import Article from '../components/Article';
   
   const Home: React.FC = () => {
 

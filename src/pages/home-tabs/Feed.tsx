@@ -13,7 +13,7 @@ import {
     IonTitle, 
     IonToolbar 
 } from '@ionic/react';
-import feed from './feedData.json';
+import SearchContainer from '../../components/SearchContainer';
 
 const Feed: React.FC = () => {
 
@@ -28,20 +28,7 @@ const Feed: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {feed.map((item,index)=>(
-
-          <IonCard key={index}>
-            <IonCardHeader>
-              <IonCardSubtitle>{item.author}, {item.date}</IonCardSubtitle>
-              <IonCardTitle>{item.title}</IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>{item.description}</IonCardContent>
-            <IonButton fill="clear" routerLink={`/it35-lab/app/home/feed/article/${item.id}`}>
-              See Details
-            </IonButton>
-          </IonCard>
-        ))}
-        
+        <SearchContainer/>
       </IonContent>
     </IonPage>
   );
