@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 import { logoIonic, } from 'ionicons/icons';
 import { useState } from 'react';
+import { supabase } from '../utils/supabaseClient';
 
   const Login: React.FC = () => {
     const navigation = useIonRouter();
@@ -22,14 +23,18 @@ import { useState } from 'react';
     const [showToast, setShowToast] = useState(false);
 
     const doLogin = async () => {
-
-      setShowAlert(true);
-      setShowToast(true); 
-      setTimeout(() => {
-        navigation.push('/it35-lab/app', 'forward', 'replace');
-      }, 1500);
-
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        setErrorMessage(error.message);
+        setShowAlert(true);
+      } else {
+        setShowToast(true); 
+        setTimeout(() => {
+          navigation.push('/it35-lab/app', 'forward', 'replace');
+        }, 1500);
+      }
     };
+    
     return (
       <IonPage>
             <IonContent className='ion-padding'>
