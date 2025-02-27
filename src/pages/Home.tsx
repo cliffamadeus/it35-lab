@@ -20,14 +20,12 @@ import { Route, Redirect } from 'react-router';
 
 import Favorites from './home-tabs/Favorites';
 import Feed from './home-tabs/Feed';
-import Search from './home-tabs/Search';
 import Article from '../components/Article';
   
   const Home: React.FC = () => {
 
     const tabs = [
       {name:'Feed', tab:'feed',url: '/it35-lab/app/home/feed', icon: bookOutline},
-      {name:'Search', tab:'search', url: '/it35-lab/app/home/search', icon: search},
       {name:'Favorites',tab:'favorites', url: '/it35-lab/app/home/favorites', icon: star},
     ]
     
@@ -48,7 +46,6 @@ import Article from '../components/Article';
 
           <Route exact path="/it35-lab/app/home/feed" render={Feed} />
           <Route exact path="/it35-lab/app/home/feed/article/:id" component={Article} />
-          <Route exact path="/it35-lab/app/home/search" render={Search} />
           <Route exact path="/it35-lab/app/home/favorites" render={Favorites} />
 
           <Route exact path="/it35-lab/app/home">

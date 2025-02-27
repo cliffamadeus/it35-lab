@@ -7,6 +7,9 @@ import {
     IonTitle, 
     IonToolbar 
 } from '@ionic/react';
+import FavoritesContainer from '../../components/FavoritesContainer';
+import { FavoritesProvider } from '../../components/FavoritesContext';
+import SearchContainer from '../../components/SearchContainer';
 
 const Favorites: React.FC = () => {
   return (
@@ -20,16 +23,10 @@ const Favorites: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100%',
-          }}
-        >
-          Favorites
-        </div>
+         <FavoritesProvider>
+              <SearchContainer />
+              <FavoritesContainer />
+            </FavoritesProvider>
       </IonContent>
     </IonPage>
   );

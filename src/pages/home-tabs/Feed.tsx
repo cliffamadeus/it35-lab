@@ -14,6 +14,7 @@ import {
     IonToolbar 
 } from '@ionic/react';
 import SearchContainer from '../../components/SearchContainer';
+import { FavoritesProvider } from '../../components/FavoritesContext';
 
 const Feed: React.FC = () => {
 
@@ -28,7 +29,11 @@ const Feed: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <SearchContainer/>
+         <FavoritesProvider>
+              <SearchContainer />
+        
+            </FavoritesProvider>
+       
       </IonContent>
     </IonPage>
   );

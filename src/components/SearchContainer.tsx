@@ -6,13 +6,17 @@ import {
   IonCardSubtitle, 
   IonCardTitle, 
   IonCardContent, 
-  IonButton 
+  IonButton, 
+  IonIcon 
 } from "@ionic/react";
+import { bookmark, bookmarkOutline } from "ionicons/icons";
 import { useState } from "react";
 import feed from "./feedData.json"; // Import JSON directly
+import { useFavorites } from "./FavoritesContext"; // Import the context
 
 const SearchContainer: React.FC = () => {
   const [results, setResults] = useState([...feed]);
+  const { favorites, toggleFavorite } = useFavorites(); // Use the shared context
 
   // Handle search input
   const handleInput = (event: CustomEvent) => {
@@ -25,16 +29,28 @@ const SearchContainer: React.FC = () => {
       <IonSearchbar debounce={500} onIonInput={handleInput}></IonSearchbar>
 
       <IonList>
-        {results.map((item, index) => (
-          <IonCard key={index}>
+        {results.map((item) => (
+          <IonCard key={item.id}>
             <IonCardHeader>
               <IonCardSubtitle>{item.author}, {item.date}</IonCardSubtitle>
               <IonCardTitle>{item.title}</IonCardTitle>
             </IonCardHeader>
-            <IonCardContent>{item.description}</IonCardContent>
-            <IonButton fill="clear" routerLink={`/it35-lab/app/home/feed/article/${item.id}`}>
-              See Details
-            </IonButton>
+            <IonCardContent>
+              {item.description}
+            </IonCardContent>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+              <IonButton fill="clear" routerLink={`/it35-lab/app/home/feed/article/${item.id}`}>
+                See Details
+              </IonButton>
+              {/* Bookmark Icon for Adding/Removing Favorites */}
+              <IonButton fill="clear" onClick={() => toggleFavorite(item.id)}>
+                <IonIcon 
+                  icon={favorites.includes(item.id) ? bookmark : bookmarkOutline} 
+                  color={favorites.includes(item.id) ? "primary" : "medium"} 
+                  size="large"
+                />
+              </IonButton>
+            </div>
           </IonCard>
         ))}
       </IonList>
