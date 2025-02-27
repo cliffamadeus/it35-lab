@@ -9,12 +9,14 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Create the users table
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username TEXT NOT NULL UNIQUE,
-    email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
-    date_registered TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    is_authenticated BOOLEAN DEFAULT FALSE
+    user_id SERIAL PRIMARY KEY,
+    username TEXT NOT NULL,
+    user_email TEXT NOT NULL UNIQUE,
+    user_firstname text,
+    user_lastname text,
+    user_avatar_url TEXT,
+    user_password TEXT NOT NULL,
+    date_registered TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
