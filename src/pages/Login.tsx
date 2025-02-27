@@ -43,10 +43,7 @@ import { supabase } from '../utils/supabaseClient';
                   flexDirection:'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  height: '100%',
-                  width:'100%',
-                  marginTop:'-10rem',
-                  marginBottom:'-18rem',
+                  marginTop:'25%'
                 }}>
                   <IonAvatar
                     style={{
