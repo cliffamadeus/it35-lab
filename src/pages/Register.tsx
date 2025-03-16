@@ -44,40 +44,45 @@ const Register: React.FC = () => {
 
     const doRegister = async () => {
         setShowVerificationModal(false);
-
-        // Sign up in Supabase authentication
-        const { data, error } = await supabase.auth.signUp({
-            email,
-            password,
-        });
-
-        if (error) {
-            alert("Account creation failed: " + error.message);
-            return;
+    
+        try {
+            // Sign up in Supabase authentication
+            const { data, error } = await supabase.auth.signUp({ email, password });
+    
+            if (error) {
+                throw new Error("Account creation failed: " + error.message);
+            }
+    
+            // Hash password before storing in the database
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
+    
+            // Insert user data into 'users' table
+            const { error: insertError } = await supabase.from("users").insert([
+                {
+                    username,
+                    user_email: email,
+                    user_firstname: firstName,
+                    user_lastname: lastName,
+                    user_password: hashedPassword,
+                },
+            ]);
+    
+            if (insertError) {
+                throw new Error("Failed to save user data: " + insertError.message);
+            }
+    
+            setShowSuccessModal(true);
+        } catch (err) {
+            // Ensure err is treated as an Error instance
+            if (err instanceof Error) {
+                alert(err.message);
+            } else {
+                alert("An unknown error occurred.");
+            }
         }
-
-        // Hash password before storing in the database
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
-        // Insert user data into 'users' table
-        const { error: insertError } = await supabase.from('users').insert([
-            {
-                username,
-                user_email: email,
-                user_firstname: firstName,
-                user_lastname: lastName,
-                user_password: hashedPassword,
-            },
-        ]);
-
-        if (insertError) {
-            alert("Failed to save user data: " + insertError.message);
-            return;
-        }
-
-        setShowSuccessModal(true);
     };
+    
 
     return (
         <IonPage>
