@@ -117,15 +117,17 @@ const FeedContainer = () => {
         <IonContent>
           {user ? (
             <>
-              <IonCard>
+            <IonCard>
                 <IonCardHeader>
-                  <IonCardTitle>Create Post</IonCardTitle>
+                    <IonCardTitle>Create Post</IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent>
-                  <IonInput value={postContent} onIonChange={e => setPostContent(e.detail.value!)} placeholder="Write a post..." />
-                  <IonButton onClick={createPost}>Post</IonButton>
+                    <IonInput value={postContent} onIonChange={e => setPostContent(e.detail.value!)} placeholder="Write a post..." />
                 </IonCardContent>
-              </IonCard>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.5rem' }}>
+                    <IonButton onClick={createPost}>Post</IonButton>
+                </div>
+            </IonCard>
 
               {posts.map(post => (
                 <IonCard key={post.post_id} style={{ marginTop: '2rem' }}>
